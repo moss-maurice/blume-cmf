@@ -1,15 +1,31 @@
 {
-    "name": "laravel/laravel",
+    "name": "mmaurice/laura-project",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "description": "Laura (&) is Laravel based CMF project",
+    "keywords": [
+        "laura",
+        "cms",
+        "cmf",
+        "laravel",
+        "framework"
+    ],
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Moss Maurice",
+            "email": "kreexus@yandex.ru",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "bit3/git-php": "^1.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -22,29 +38,29 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Blume\\": "system/core/",
+            "Database\\Factories\\": "system/database/factories/",
+            "Database\\Seeders\\": "system/database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "system/tests/"
         }
     },
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php system/artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php system/artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('system/.env') || copy('system/.env.example', 'system/.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php system/artisan key:generate --ansi"
         ]
     },
     "extra": {
@@ -59,8 +75,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
-        }
+        },
+        "vendor-dir": "system/vendor"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
