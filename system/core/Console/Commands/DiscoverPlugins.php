@@ -1,10 +1,10 @@
 <?php
 
-namespace Lacora\Console\Commands;
+namespace Blume\Console\Commands;
 
 use Illuminate\Console\Command;
-use Lacora\Models\Plugins;
-use Lacora\Services\PluginService;
+use Blume\Models\Plugins;
+use Blume\Services\PluginService;
 
 class DiscoverPlugins extends Command
 {

@@ -11,6 +11,6 @@ class CoreService
 
     public function version()
     {
-        return '0.01';
+        return '0.0.1';
     }
 }
