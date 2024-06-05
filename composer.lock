@@ -4,8 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c67366f8c9b162ea2f65dca3457bde61",
+    "content-hash": "5805249da9ade0391e95d7a99d6036db",
     "packages": [
+        {
+            "name": "bit3/git-php",
+            "version": "dev-release/1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bit3/git-php.git",
+                "reference": "4f733e1e514fb9a6b352eaa18db5fba06957ab9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bit3/git-php/zipball/4f733e1e514fb9a6b352eaa18db5fba06957ab9d",
+                "reference": "4f733e1e514fb9a6b352eaa18db5fba06957ab9d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0",
+                "psr/log": "^1.0 || ^2.0 || ^3.0",
+                "symfony/process": "^4.0 || ^5.0 || ^6.0"
+            },
+            "require-dev": {
+                "phpcq/runner-bootstrap": "^1.0@dev",
+                "symfony/filesystem": "^4.0 || ^5.0 || ^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-release/1.6.0": "1.6.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bit3\\GitPhp\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Easy to use GIT wrapper for PHP.",
+            "support": {
+                "issues": "https://github.com/bit3/git-php/issues",
+                "source": "https://github.com/bit3/git-php/tree/release/1.6.0"
+            },
+            "time": "2023-08-16T09:46:28+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",
@@ -8122,7 +8167,9 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "ext-pdo": "*",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"

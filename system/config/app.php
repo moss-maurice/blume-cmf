@@ -163,11 +163,16 @@ return [
         /*
          * Application Service Providers...
          */
+        Blume\ServiceProvider::class,
         Blume\Providers\AppServiceProvider::class,
         Blume\Providers\AuthServiceProvider::class,
         // Blume\Providers\BroadcastServiceProvider::class,
         Blume\Providers\EventServiceProvider::class,
         Blume\Providers\RouteServiceProvider::class,
+        Blume\Providers\CoreServiceProvider::class,
+        Blume\Providers\EventsServiceProvider::class,
+        Blume\Providers\ModulesServiceProvider::class,
+        Blume\Providers\PluginsServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -183,6 +188,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => Blume\Facades\Example::class,
+        'Core' => Blume\Facades\Core::class,
     ])->toArray(),
 
 ];

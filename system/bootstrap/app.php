@@ -11,15 +11,9 @@
 |
 */
 
-if (PHP_SAPI === 'cli') {
-    $app = new Blume\Foundation\ConsoleApplication(
-        $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-    );
-} else {
-    $app = new Blume\Foundation\Application(
-        $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-    );
-}
+$app = new Blume\Foundation\Application(
+    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
+);
 
 /*
 |--------------------------------------------------------------------------

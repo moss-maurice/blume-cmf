@@ -41,7 +41,14 @@
             "Blume\\": "system/core/",
             "Database\\Factories\\": "system/database/factories/",
             "Database\\Seeders\\": "system/database/seeders/"
-        }
+        },
+        "files": [
+            "system/helpers/blume.php"
+        ],
+        "classmap": [
+            "modules",
+            "plugins"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
