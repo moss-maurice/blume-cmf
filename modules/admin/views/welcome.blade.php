@@ -1,11 +1,9 @@
 Welcome to blume module
 
 @php
-    use Blume\Events\ExampleEvent;
-
-    event(new ExampleEvent);
-
+    // Получение наименование проекта
     dump(blume()->name());
 
+    // Получение версии проекта
     dump(blume()->version());
 @endphp

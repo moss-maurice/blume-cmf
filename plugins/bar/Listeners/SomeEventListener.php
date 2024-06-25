@@ -2,11 +2,12 @@
 
 namespace Plugins\Bar\Listeners;
 
-use Blume\Events\ExampleEvent;
+use Blume\Foundation\Events\Event;
+use Blume\Foundation\Events\EventListener;
 
-class SomeEventListener
+class SomeEventListener extends EventListener
 {
-    public function handle(ExampleEvent $event)
+    public function handle(Event $event): void
     {
         dump('plugin is bar');
     }

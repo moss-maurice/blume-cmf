@@ -167,7 +167,6 @@ return [
         Blume\Providers\AppServiceProvider::class,
         Blume\Providers\AuthServiceProvider::class,
         // Blume\Providers\BroadcastServiceProvider::class,
-        Blume\Providers\EventServiceProvider::class,
         Blume\Providers\RouteServiceProvider::class,
         Blume\Providers\CoreServiceProvider::class,
         Blume\Providers\EventsServiceProvider::class,

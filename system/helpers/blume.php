@@ -1,8 +1,10 @@
 <?php
 
+use Blume\Services\CoreService;
+
 if (!function_exists('blume')) {
     function blume()
     {
-        return app('core');
+        return app(CoreService::class);
     }
 }
