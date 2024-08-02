@@ -64,7 +64,7 @@ class ModulesService
     {
         $name = ucfirst($name);
 
-        $namespace = "Modules\\{$name}\\{$name}ServiceProvider";
+        $namespace = config('app.namespace') . "\\Modules\\{$name}\\{$name}ServiceProvider";
 
         if (class_exists($namespace)) {
             return $namespace;

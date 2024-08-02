@@ -17,7 +17,7 @@ trait NodesRegistrator
         return app($this->nodes[$node]);
     }
 
-    public function registerNode(string $node, string $service)
+    public function registerNode(string $node, string $service): self
     {
         $this->nodes[$node] = $service;
 
@@ -26,7 +26,7 @@ trait NodesRegistrator
         return $this;
     }
 
-    public function registerNodeMethod(string $node, string $method, $callback)
+    public function registerNodeMethod(string $node, string $method, $callback): self
     {
         if (!$this->hasNode($node)) {
             throw new BadMethodCallException("Definition '{$node}' not exists");
@@ -37,12 +37,12 @@ trait NodesRegistrator
         return $this;
     }
 
-    public function hasNode(string $node)
+    public function hasNode(string $node): bool
     {
         return isset($this->nodes[$node]) && app()->bound($this->nodes[$node]);
     }
 
-    protected function registerService($service)
+    protected function registerService(string $service): void
     {
         if (!app()->bound($service)) {
             app()->singleton($service, function ($app) use ($service) {

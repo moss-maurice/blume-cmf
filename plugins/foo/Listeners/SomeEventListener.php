@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugins\Foo\Listeners;
+namespace Blume\Plugins\Foo\Listeners;
 
 use Blume\Foundation\Events\Event;
 use Blume\Foundation\Events\EventListener;

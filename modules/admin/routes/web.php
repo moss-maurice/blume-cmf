@@ -1,23 +1,43 @@
 <?php
 
+use Blume\Modules\Admin\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('admin/welcome', function () {
-    return view('admin::welcome');
-});
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['web']], function () {
+    Route::get('welcome', function () {
+        return view('admin::welcome');
+    });
 
-Route::get('admin/events', function () {
-    return view('admin::apiEventsTest');
-});
+    Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
+        Route::get('auth', function () {
+            return view('admin::apiAuthTest');
+        });
 
-Route::get('admin/plugins', function () {
-    return view('admin::apiPluginsTest');
-});
+        Route::get('events', function () {
+            return view('admin::apiEventsTest');
+        });
 
-Route::get('admin/modules', function () {
-    return view('admin::apiModulesTest');
+        Route::get('plugins', function () {
+            return view('admin::apiPluginsTest');
+        });
+
+        Route::get('modules', function () {
+            return view('admin::apiModulesTest');
+        });
+
+        Route::get('carbon', function () {
+            return view('admin::apiCarbonTest');
+        });
+    });
+
+    Route::resource('posts', PostsController::class)
+        /*->middleware(['role:admin'])*/;
 });
 
 Route::get('admin', function () {
     return view('admin::welcome');
 });
+
+/*Route::group(['middleware' => ['role:editor']], function () {
+    Route::get('editor/dashboard', [EditorController::class, 'index']);
+});*/

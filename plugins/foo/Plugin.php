@@ -1,9 +1,9 @@
 <?php
 
-namespace Plugins\Foo;
+namespace Blume\Plugins\Foo;
 
 use Blume\Foundation\Plugins\Plugin as BasePlugin;
-use Plugins\Foo\Listeners\SomeEventListener;
+use Blume\Plugins\Foo\Listeners\SomeEventListener;
 
 class Plugin extends BasePlugin
 {

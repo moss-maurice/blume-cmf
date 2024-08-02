@@ -8,6 +8,7 @@ use Blume\Foundation\Core\ModulesResolver;
 use Blume\Foundation\Core\PluginsResolver;
 use Blume\Foundation\Core\UsersResolver;
 use Blume\Services\CoreService;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class CoreServiceProvider extends ServiceProvider
@@ -19,16 +20,16 @@ class CoreServiceProvider extends ServiceProvider
         });
 
         // Пример регистрации класса ClassName в качестве узла nodeName API-слоя ядра
-        // Вызываеися как blume()->nodeName()
+        // Вызываеися как blume()->{nodeName}()
         // Наследует все методы регистрируемого класса
         //blume()->registerNode('nodeName', ClassName::class);
 
         // Пример регистрации метода classMethodName класса ClassName в качестве метода methodName узла nodeName API-слоя ядра
-        // Вызывается как blume()->nodeName()->methodName();
+        // Вызывается как blume()->{nodeName}()->{methodName}();
         //blume()->registerNodeMethod('nodeName', 'methodName', [ClassName::class, 'classMethodName']);
 
         // Пример регистрации анонимной функции в качестве метода methodName узла nodeName API-слоя ядра
-        // Вызывается как blume()->nodeName()->methodName();
+        // Вызывается как blume()->{nodeName}()->{methodName}();
         //blume()->registerNodeMethod('nodeName', 'methodName', function () {
         //    return 'foo bar';
         //});
@@ -38,5 +39,6 @@ class CoreServiceProvider extends ServiceProvider
         blume()->registerNode('modules', ModulesResolver::class);
         blume()->registerNode('events', EventsResolver::class);
         blume()->registerNode('plugins', PluginsResolver::class);
+        blume()->registerNode('carbon', Carbon::class);
     }
 }

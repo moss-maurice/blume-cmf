@@ -95,6 +95,17 @@ class EventsService
         return null;
     }
 
+    public function callEvent($name): bool
+    {
+        if ($this->getEvent($name)) {
+            event($this->handleEvent($name));
+
+            return true;
+        }
+
+        return false;
+    }
+
     public function handleEvent($name): EventInterface|null
     {
         if ($handler = $this->getEventHandler($name)) {

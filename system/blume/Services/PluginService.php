@@ -113,7 +113,7 @@ class PluginService
     {
         $name = ucfirst($name);
 
-        $namespace = "Plugins\\{$name}\\Plugin";
+        $namespace = config('app.namespace') . "\\Plugins\\{$name}\\Plugin";
 
         if (class_exists($namespace)) {
             return $namespace;

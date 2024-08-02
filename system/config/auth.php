@@ -62,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Blume\Models\User::class,
+            'model' => Blume\Models\Users::class,
         ],
 
         // 'users' => [
@@ -93,7 +93,7 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_reset_tokens',
+            'table' => 'users_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],

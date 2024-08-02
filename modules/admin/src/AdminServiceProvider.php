@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Admin;
+namespace Blume\Modules\Admin;
 
 use Illuminate\Support\ServiceProvider;
 

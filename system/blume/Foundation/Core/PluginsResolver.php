@@ -58,20 +58,38 @@ class PluginsResolver extends ApiNode
 
     public function installPlugin(string $name): bool
     {
+        blume()->events()->callEvent('plugin.onInstall.before');
+        blume()->events()->callEvent('plugin.onInstall');
+
         if (!$this->isInstalledPlugin($name)) {
             (new PluginService)->getPluginInstance($name)
                 ->save();
+
+            blume()->events()->callEvent('plugin.onInstall.success');
+        } else {
+            blume()->events()->callEvent('plugin.onInstall.error');
         }
+
+        blume()->events()->callEvent('plugin.onInstall.after');
 
         return $this->isInstalledPlugin($name);
     }
 
     public function uninstallPlugin(string $name): bool
     {
+        blume()->events()->callEvent('plugin.onUninstall.before');
+        blume()->events()->callEvent('plugin.onUninstall');
+
         if ($this->isInstalledPlugin($name)) {
             (new PluginService)->getPluginInstance($name)
                 ->delete();
+
+            blume()->events()->callEvent('plugin.onUninstall.success');
+        } else {
+            blume()->events()->callEvent('plugin.onUninstall.error');
         }
+
+        blume()->events()->callEvent('plugin.onUninstall.after');
 
         return !$this->isInstalledPlugin($name);
     }
@@ -104,6 +122,9 @@ class PluginsResolver extends ApiNode
 
     public function activatePlugin(string $name): bool
     {
+        blume()->events()->callEvent('plugin.onActivate.before');
+        blume()->events()->callEvent('plugin.onActivate');
+
         if (!$this->isActivatedPlugin($name)) {
             (new PluginService)->getPluginInstance($name)
                 ->fill([
@@ -112,13 +133,22 @@ class PluginsResolver extends ApiNode
                 ->save();
 
             $this->registerPlugin($name);
+
+            blume()->events()->callEvent('plugin.onActivate.success');
+        } else {
+            blume()->events()->callEvent('plugin.onActivate.error');
         }
+
+        blume()->events()->callEvent('plugin.onActivate.after');
 
         return $this->isActivatedPlugin($name);
     }
 
     public function deactivatePlugin(string $name): bool
     {
+        blume()->events()->callEvent('plugin.onDeactivate.before');
+        blume()->events()->callEvent('plugin.onDeactivate');
+
         if ($this->isActivatedPlugin($name)) {
             (new PluginService)->getPluginInstance($name)
                 ->fill([
@@ -127,22 +157,44 @@ class PluginsResolver extends ApiNode
                 ->save();
 
             $this->unregisterPlugin($name);
+
+            blume()->events()->callEvent('plugin.onDeactivate.success');
+        } else {
+            blume()->events()->callEvent('plugin.onDeactivate.error');
         }
+
+        blume()->events()->callEvent('plugin.onDeactivate.after');
 
         return !$this->isActivatedPlugin($name);
     }
 
     public function registerPlugin(string $name): void
     {
+        blume()->events()->callEvent('plugin.onRegister.before');
+        blume()->events()->callEvent('plugin.onRegister');
+
         if ($handler = (new PluginService)->handlePlugin($name)) {
             $handler->registerListeners();
+
+            blume()->events()->callEvent('plugin.onRegister.success');
+        } else {
+            blume()->events()->callEvent('plugin.onRegister.error');
         }
+
+        blume()->events()->callEvent('plugin.onDeactivate.after');
     }
 
     public function unregisterPlugin(string $name): void
     {
+        blume()->events()->callEvent('plugin.onUnregister.before');
+        blume()->events()->callEvent('plugin.onUnregister');
+
         if ($handler = (new PluginService)->handlePlugin($name)) {
             $handler->unregisterListeners();
+
+            blume()->events()->callEvent('plugin.onUnregister.success');
+        } else {
+            blume()->events()->callEvent('plugin.onUnregister.error');
         }
     }
 }

@@ -2,7 +2,7 @@ Api events test page
 
 @php
     use Blume\Events\ExampleEvent;
-    use Plugins\Bar\Listeners\SomeEventListener;
+    use Blume\Plugins\Bar\Listeners\SomeEventListener;
 
     // Все зарегистрированные события
     dump(blume()->events()->allEvents()->toArray());
